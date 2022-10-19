@@ -33,12 +33,13 @@ struct ChatView: View {
             Divider()
                 .background(Color.black)
 
-            ScrollView {
+            MessagesView()
 
-            }
 
-            Spacer()
+
+
         }
+        .background(.white)
     }
 }
 
