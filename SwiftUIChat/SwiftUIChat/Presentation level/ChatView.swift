@@ -10,6 +10,7 @@ import SwiftUI
 struct ChatView: View {
 
     @State private var messageText: String = ""
+    @State var isBlurActive: Bool = false
 
     var body: some View {
         VStack(spacing: 0) {
@@ -27,33 +28,36 @@ struct ChatView: View {
             }
             .padding(.horizontal, 20)
             .padding(.vertical, 14)
+            .addBlurLogic(isBlurActive: $isBlurActive)
 
             Divider()
                 .background(Color.black)
                 .padding(.vertical, 14)
+                .addBlurLogic(isBlurActive: $isBlurActive)
 
             ChatOfferInfoView()
+                .addBlurLogic(isBlurActive: $isBlurActive)
+
 
             Divider()
                 .background(Color.black)
                 .padding(.top, 14)
+                .addBlurLogic(isBlurActive: $isBlurActive)
             
-            MessagesView()
+            MessagesView(isBlurActive: $isBlurActive)
 
             Divider()
+                .addBlurLogic(isBlurActive: $isBlurActive)
 
             ChatInputTextField(title: "Message...",
                                text: $messageText)
+            .addBlurLogic(isBlurActive: $isBlurActive)
             .padding(15)
-
-
-
 
         }
         .background(.white)
     }
 }
-
 
 struct ChatView_Previews: PreviewProvider {
     static var previews: some View {

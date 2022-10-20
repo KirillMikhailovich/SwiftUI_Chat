@@ -20,6 +20,7 @@
 		310C629B29009FC900F05D39 /* MessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310C629A29009FC900F05D39 /* MessagesView.swift */; };
 		310C629F29017DD100F05D39 /* MessageOfferInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310C629E29017DD100F05D39 /* MessageOfferInfoView.swift */; };
 		310C62A1290181F700F05D39 /* ChatInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310C62A0290181F700F05D39 /* ChatInputField.swift */; };
+		310C62A42902021800F05D39 /* BlurProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310C62A32902021700F05D39 /* BlurProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		310C629A29009FC900F05D39 /* MessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessagesView.swift; sourceTree = "<group>"; };
 		310C629E29017DD100F05D39 /* MessageOfferInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageOfferInfoView.swift; sourceTree = "<group>"; };
 		310C62A0290181F700F05D39 /* ChatInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInputField.swift; sourceTree = "<group>"; };
+		310C62A32902021700F05D39 /* BlurProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,10 +71,11 @@
 		310C627929006DD500F05D39 /* SwiftUIChat */ = {
 			isa = PBXGroup;
 			children = (
+				310C627A29006DD500F05D39 /* SwiftUIChatApp.swift */,
 				310C629529009C8200F05D39 /* Model level */,
 				310C629129008CBE00F05D39 /* Presentation level */,
 				310C628C29008BFB00F05D39 /* Views */,
-				310C627A29006DD500F05D39 /* SwiftUIChatApp.swift */,
+				310C62A2290201F600F05D39 /* Utilites */,
 				310C627E29006DD600F05D39 /* Assets.xcassets */,
 				310C628029006DD600F05D39 /* Preview Content */,
 			);
@@ -124,6 +127,14 @@
 				310C629629009C9200F05D39 /* Message.swift */,
 			);
 			path = "Model level";
+			sourceTree = "<group>";
+		};
+		310C62A2290201F600F05D39 /* Utilites */ = {
+			isa = PBXGroup;
+			children = (
+				310C62A32902021700F05D39 /* BlurProvider.swift */,
+			);
+			path = Utilites;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,6 +213,7 @@
 				310C627D29006DD500F05D39 /* ChatView.swift in Sources */,
 				310C629F29017DD100F05D39 /* MessageOfferInfoView.swift in Sources */,
 				310C629029008C7500F05D39 /* ChatOfferInfoView.swift in Sources */,
+				310C62A42902021800F05D39 /* BlurProvider.swift in Sources */,
 				310C628929006F5600F05D39 /* ChatViewModel.swift in Sources */,
 				310C628E29008C0F00F05D39 /* ChatUserInfoView.swift in Sources */,
 				310C629729009C9200F05D39 /* Message.swift in Sources */,
