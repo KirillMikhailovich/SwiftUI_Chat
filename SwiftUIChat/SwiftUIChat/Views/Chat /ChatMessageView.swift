@@ -12,13 +12,16 @@ import SwiftUI
 struct ChatMessageView : View {
 
     private enum Constants {
+        static let verticalSpacing: CGFloat = 15
+
         static let defaultUserId = "defaultUser"
     }
 
     var currentMessage: Message
 
     var body: some View {
-        HStack(alignment: .bottom, spacing: 15) {
+        HStack(alignment: .bottom,
+               spacing: Constants.verticalSpacing) {
             if currentMessage.user == Constants.defaultUserId {
                 Spacer()
             }
@@ -33,6 +36,18 @@ struct ChatMessageView : View {
 }
 
 struct ContentMessageView: View {
+
+    private enum Constants {
+        static let trailingMessageTextPadding: CGFloat = 20
+        static let bottomMessageTextPadding: CGFloat = 30
+        static let paddingDateText: CGFloat = 6
+
+        static let cornerRadius: CGFloat = 10
+
+        static let currentUserBackgrounColor = Color("user_message_background")
+        static let interlocutorBackgrounColor = Color("interlocutor_message_background")
+    }
+
     var contentMessage: String
     var isCurrentUser: Bool
 
@@ -41,8 +56,8 @@ struct ContentMessageView: View {
     var body: some View {
             Text(contentMessage)
             .padding([.leading, .top])
-            .padding(.trailing, 20)
-            .padding(.bottom, 30)
+            .padding(.trailing, Constants.trailingMessageTextPadding)
+            .padding(.bottom, Constants.bottomMessageTextPadding)
             .foregroundColor(Color.black)
             .font(.system(size: 14))
             .overlay() {
@@ -55,18 +70,21 @@ struct ContentMessageView: View {
                         Text("12:23")
                             .foregroundColor(Color.gray)
                             .font(.system(size: 12))
-                            .padding([.horizontal, .vertical], 6)
+                            .padding([.horizontal, .vertical], Constants.paddingDateText)
                     }
                 }
             }
-            .background(isCurrentUser ? Color("current_user_message_background") : Color("other_user_message_background"))
-            .cornerRadius(10)
+            .background(isCurrentUser ? Constants.currentUserBackgrounColor : Constants.interlocutorBackgrounColor)
+            .cornerRadius(Constants.cornerRadius)
     }
 }
 
 struct ChatMessageView_Previews: PreviewProvider {
+
     static var previews: some View {
-        let message = Message(content: "dsdsds", user: "defaultUer")
+        let message = Message(content: "test",
+                              user: "defaultUer")
         ChatMessageView(currentMessage: message)
     }
+
 }

@@ -12,7 +12,7 @@ struct ChatView: View {
     @State private var messageText: String = ""
 
     var body: some View {
-        VStack() {
+        VStack(spacing: 0) {
             HStack(spacing: 20) {
                 Image(systemName: "chevron.left")
                     .resizable()
@@ -30,13 +30,13 @@ struct ChatView: View {
 
             Divider()
                 .background(Color.black)
+                .padding(.vertical, 14)
 
             ChatOfferInfoView()
 
             Divider()
                 .background(Color.black)
-
-            Spacer()
+                .padding(.top, 14)
             
             MessagesView()
 

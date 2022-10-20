@@ -13,6 +13,12 @@ struct ChatInputTextField: View {
         static let height: CGFloat = 40
         static let textPadding: CGFloat = 10
         static let cornerRadius: CGFloat = 20
+        static let extraTrailingTextPadding: CGFloat = 30
+
+        static let backgroundColor = Color("interlocutor_message_background")
+
+        static let galleryIconTrailingPadding: CGFloat = 15
+
     }
 
     let title: String
@@ -23,17 +29,17 @@ struct ChatInputTextField: View {
             TextField(title, text: $text, axis: .vertical)
                 .textFieldStyle(.plain)
                 .multilineTextAlignment(.leading)
-                .padding(.horizontal, 10)
+                .padding(.horizontal, Constants.textPadding)
                 .font(.system(size: 14))
                 .lineLimit(1...3)
-                .background(Color("other_user_message_background"))
+                .background(.clear)
                 .textFieldStyle(.roundedBorder)
-                .padding(.trailing, 30)
+                .padding(.trailing, Constants.extraTrailingTextPadding)
         }
-        .padding(12)
+        .padding(Constants.textPadding)
         .background(
             RoundedRectangle(cornerRadius: Constants.cornerRadius, style: .continuous)
-                .fill(Color("other_user_message_background"))
+                .fill(Constants.backgroundColor)
         )
 
         .overlay() {
@@ -43,8 +49,8 @@ struct ChatInputTextField: View {
                     Spacer()
 
                     Image(systemName: "camera")
-                        .padding(.bottom, 12)
-                        .padding(.trailing, 15)
+                        .padding(.bottom, Constants.textPadding)
+                        .padding(.trailing, Constants.galleryIconTrailingPadding)
                 }
             }
         }
@@ -53,10 +59,12 @@ struct ChatInputTextField: View {
 }
 
 struct ChatInputTextField_Previews: PreviewProvider {
+    
     @State static var text: String = "test"
 
     static var previews: some View {
         ChatInputTextField(title: "TestTitle", text: $text)
             .previewLayout(.sizeThatFits)
     }
+
 }

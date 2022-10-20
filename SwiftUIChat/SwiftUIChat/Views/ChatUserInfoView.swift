@@ -8,34 +8,48 @@
 import SwiftUI
 
 struct ChatUserInfoView: View {
+
+    private enum Constants {
+        static let avatarSize: CGFloat = 34
+        static let checkmarkSize: CGFloat = 16
+
+        static let horizontalSpacing: CGFloat = 6
+    }
+
     var body: some View {
+
         HStack {
             Image("avatar")
                 .resizable()
-                .frame(width: 34, height: 34)
+                .frame(width: Constants.avatarSize,
+                       height:  Constants.avatarSize)
 
-            VStack(alignment: .leading, spacing: 0) {
-                    Text("Daniel Moriz")
-                        .bold()
-                        .font(.system(size: 14))
+            VStack(alignment: .leading,
+                   spacing: 0) {
+                Text("Daniel Moriz")
+                    .bold()
+                    .font(.system(size: 14))
 
-                    HStack(spacing: 6) {
-                        ZStack {
-                            Image(systemName: "checkmark.seal.fill")
-                                .resizable()
-                                .frame(width: 16, height: 16)
-                        }
-                        .frame(width: 16, height: 16)
-
-
-                        Text("Verified")
-                            .font(.system(size: 12))
-
+                HStack(spacing: Constants.horizontalSpacing) {
+                    ZStack {
+                        Image(systemName: "checkmark.seal.fill")
+                            .resizable()
+                            .frame(width: Constants.checkmarkSize,
+                                   height: Constants.checkmarkSize)
                     }
+                    .frame(width: Constants.checkmarkSize,
+                           height: Constants.checkmarkSize)
+
+
+                    Text("Verified")
+                        .font(.system(size: 12))
 
                 }
+
+            }
         }
     }
+    
 }
 
 struct ChatUserInfoView_Previews: PreviewProvider {

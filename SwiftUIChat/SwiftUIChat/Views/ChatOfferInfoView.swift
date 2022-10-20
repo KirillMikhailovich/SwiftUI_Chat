@@ -8,6 +8,15 @@
 import SwiftUI
 
 struct ChatOfferInfoView: View {
+
+    private enum Constants {
+        static let buttonWidth: CGFloat = 120
+        static let buttonPadding: CGFloat = 6
+
+        static let horizontalPadding: CGFloat = 14
+    }
+
+
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: 2) {
@@ -26,10 +35,10 @@ struct ChatOfferInfoView: View {
             ChatOfferButton(title: "Change offer") {
                 print("Change offer")
             }
-            .padding(.top, 6)
-            .frame(width: 120)
+            .padding(.top, Constants.buttonPadding)
+            .frame(width: Constants.buttonWidth)
         }
-        .padding(.horizontal, 14)
+        .padding(.horizontal, Constants.horizontalPadding)
     }
 }
 

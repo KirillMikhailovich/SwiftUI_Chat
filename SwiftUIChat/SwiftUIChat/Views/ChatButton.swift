@@ -40,7 +40,8 @@ struct ChatButtonStyle: ButtonStyle {
 
     private enum Constants {
         static let cornerRadius: CGFloat = 18
-        static let padding: CGFloat = 10
+        static let verticalPadding: CGFloat = 10
+        static let horizontalPadding: CGFloat = 16
     }
 
     init() {
@@ -50,8 +51,8 @@ struct ChatButtonStyle: ButtonStyle {
         return configuration.label
             .background(.white)
             .cornerRadius(Constants.cornerRadius)
-            .padding(.vertical, Constants.padding)
-            .padding(.horizontal, 16)
+            .padding(.vertical, Constants.verticalPadding)
+            .padding(.horizontal, Constants.horizontalPadding)
             .tint(.black)
             .font(Font.system(size: 14, weight: .bold))
             .minimumScaleFactor(0.7)

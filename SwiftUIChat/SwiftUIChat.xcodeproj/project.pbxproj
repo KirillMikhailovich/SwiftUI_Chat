@@ -92,8 +92,8 @@
 			children = (
 				310C629229008D5100F05D39 /* Chat  */,
 				310C628D29008C0F00F05D39 /* ChatUserInfoView.swift */,
-				310C628A2900830B00F05D39 /* ChatButton.swift */,
 				310C628F29008C7500F05D39 /* ChatOfferInfoView.swift */,
+				310C628A2900830B00F05D39 /* ChatButton.swift */,
 				310C62A0290181F700F05D39 /* ChatInputField.swift */,
 			);
 			path = Views;

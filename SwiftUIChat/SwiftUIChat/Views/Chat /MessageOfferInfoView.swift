@@ -8,8 +8,17 @@
 import SwiftUI
 
 struct MessageOfferInfoView: View {
+
+    private enum Constants {
+        static let verticalSpacing: CGFloat = 10
+        static let stackPadding: CGFloat = 15
+        static let cornerRadius: CGFloat = 10
+
+        static let borderColor = Color("border_color")
+    }
+
     var body: some View {
-        VStack(spacing: 10){
+        VStack(spacing: Constants.verticalSpacing){
             Image("offer_accepted")
 
             Text("Daniel gets your offer for")
@@ -24,20 +33,22 @@ struct MessageOfferInfoView: View {
                 .multilineTextAlignment(.center)
                 .font(.system(size: 12))
         }
-        .padding(15)
+        .padding(Constants.stackPadding)
         .background(
             RoundedRectangle(
-                cornerRadius: 10,
+                cornerRadius: Constants.cornerRadius,
                 style: .continuous
             )
-            .stroke(Color("border_color"))
+            .stroke(Constants.borderColor)
         )
     }
 }
 
 struct MessageOfferInfoView_Preview: PreviewProvider {
+
     static var previews: some View {
         MessageOfferInfoView()
             .frame(width: .infinity)
     }
+    
 }
