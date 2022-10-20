@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ChatView: View {
+
+    @State private var messageText: String = ""
+
     var body: some View {
         VStack() {
             HStack(spacing: 20) {
@@ -33,7 +36,15 @@ struct ChatView: View {
             Divider()
                 .background(Color.black)
 
+            Spacer()
+            
             MessagesView()
+
+            Divider()
+
+            ChatInputTextField(title: "Message...",
+                               text: $messageText)
+            .padding(15)
 
 
 

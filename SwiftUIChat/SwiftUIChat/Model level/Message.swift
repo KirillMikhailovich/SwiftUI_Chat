@@ -21,6 +21,9 @@ struct DataSource {
         Message(content: "Hi Daniel, my name is Eleni, I am a professional cleaner with 10 years of expirience. I can come to you tomorrow morning. 2 bedroom appartement costs 30 euros and takes about 3 hours. Is it okay for you?", user: DataSource.firstUser),
         Message(content: "I can also wash terrace, windows and balcony for extra 20 euros if needed. ", user: DataSource.firstUser),
         Message(content: "Hi Eleni, sounds good for me, tomorrow morning is perfect.", user: DataSource.secondUser),
+        Message(content: "Hi Daniel, my name is Eleni, I am a professional cleaner with 10 years of expirience. I can come to you tomorrow morning. 2 bedroom appartement costs 30 euros and takes about 3 hours. Is it okay for you?", user: DataSource.firstUser),
+        Message(content: "I can also wash terrace, windows and balcony for extra 20 euros if needed. ", user: DataSource.firstUser),
+        Message(content: "Hi Eleni, sounds good for me, tomorrow morning is perfect.", user: DataSource.secondUser),
         Message(content: "My plans have changed, so I’v changed the terms of order, could you reduce the cost please?", user: DataSource.secondUser),
     ]
 }

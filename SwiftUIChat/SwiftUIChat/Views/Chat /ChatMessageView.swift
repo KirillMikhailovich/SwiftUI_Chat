@@ -28,7 +28,6 @@ struct ChatMessageView : View {
                 Spacer()
             }
         }
-        .padding(.horizontal, 20)
     }
 
 }

@@ -9,27 +9,27 @@ import SwiftUI
 
 struct MessagesView: View {
     var body: some View {
-        ScrollView {
-            VStack() {
-                Spacer()
+        GeometryReader { reader in
+            ScrollView {
+                VStack() {
+                    Spacer()
+
+                    MessageOfferInfoView()
 
 
-                ForEach(DataSource.messages) { message in
-                    ChatMessageView(currentMessage: message)
+                    ForEach(DataSource.messages) { message in
+                        ChatMessageView(currentMessage: message)
+                    }
+
+                    .frame(maxWidth: .infinity)
+                    .edgesIgnoringSafeArea(.horizontal)
+                    .listStyle(PlainListStyle())
                 }
-
-                .frame(maxWidth: .infinity)
-                .edgesIgnoringSafeArea(.horizontal)
-                .listStyle(PlainListStyle())
+                .background(.white)
+                .padding()
+                .frame(minHeight: reader.size.height)
             }
-            .background(.white)
-            .padding()
-            .rotationEffect(Angle(degrees: 180))
         }
-        .rotationEffect(Angle(degrees: 180))
-
-
-
     }
 }
 
