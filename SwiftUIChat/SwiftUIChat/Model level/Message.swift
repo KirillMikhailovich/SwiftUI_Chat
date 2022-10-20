@@ -12,6 +12,12 @@ struct Message: Hashable, Identifiable {
 
     var content: String
     var user: String
+    var state: MessageState = .readed
+}
+
+enum MessageState {
+    case sended
+    case readed
 }
 
 struct Mock {
