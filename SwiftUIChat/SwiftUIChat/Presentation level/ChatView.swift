@@ -99,7 +99,7 @@ struct ChatView: View {
             .overlay {
                 GeometryReader { reader in
                     EmptyView()
-                        .onChange(of: isBlurActive) { _ in
+                        .onAppear { 
                             headerHeight = reader.size.height
                     }
                 }
@@ -127,7 +127,7 @@ struct ChatView: View {
             .overlay {
                 GeometryReader { reader in
                     EmptyView()
-                        .onChange(of: isBlurActive) { _ in
+                        .onAppear {
                             footerHeight = reader.size.height
                     }
                 }
