@@ -11,7 +11,7 @@ struct MessagesView: View {
 
     private enum Constants {
         static let horizontalPadding: CGFloat = 12
-        static let verticalEditViewPadding: CGFloat = 30
+        static let verticalEditViewPadding: CGFloat = 35
         static let commonUsersNegativeVerticalPadding: CGFloat = 15
         static let differentUsersNegativeVerticalPadding: CGFloat = 5
 
