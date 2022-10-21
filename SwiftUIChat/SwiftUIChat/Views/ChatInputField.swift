@@ -11,7 +11,7 @@ struct ChatInputTextField: View {
 
     enum Constants {
         static let height: CGFloat = 40
-        static let textPadding: CGFloat = 10
+        static let textPadding: CGFloat = 12
         static let cornerRadius: CGFloat = 20
         static let extraTrailingTextPadding: CGFloat = 30
 
@@ -25,35 +25,33 @@ struct ChatInputTextField: View {
     @Binding var text: String
 
     var body: some View {
-        HStack {
-            TextField(title, text: $text, axis: .vertical)
-                .textFieldStyle(.plain)
-                .multilineTextAlignment(.leading)
-                .padding(.horizontal, Constants.textPadding)
-                .font(.system(size: 14))
-                .lineLimit(1...3)
-                .background(.clear)
-                .textFieldStyle(.roundedBorder)
-                .padding(.trailing, Constants.extraTrailingTextPadding)
-        }
-        .padding(Constants.textPadding)
-        .background(
-            RoundedRectangle(cornerRadius: Constants.cornerRadius, style: .continuous)
-                .fill(Constants.backgroundColor)
-        )
-
-        .overlay() {
-            VStack() {
-                Spacer()
-                HStack() {
+        TextField(title, text: $text, axis: .vertical)
+            .textFieldStyle(.plain)
+            .multilineTextAlignment(.leading)
+            .padding(.horizontal, Constants.textPadding)
+            .font(.system(size: 14))
+            .lineLimit(1...5)
+            .background(.clear)
+            .textFieldStyle(.roundedBorder)
+            .padding(Constants.textPadding)
+            .padding(.trailing, 30)
+            .frame(minHeight: Constants.height)
+            .background(
+                RoundedRectangle(cornerRadius: Constants.cornerRadius, style: .continuous)
+                    .fill(Constants.backgroundColor)
+            )
+            .overlay() {
+                VStack() {
                     Spacer()
+                    HStack() {
+                        Spacer()
 
-                    Image(systemName: "camera")
-                        .padding(.bottom, Constants.textPadding)
-                        .padding(.trailing, Constants.galleryIconTrailingPadding)
+                        Image(systemName: "camera")
+                            .padding(.bottom, Constants.textPadding)
+                            .padding(.trailing, Constants.galleryIconTrailingPadding)
+                    }
                 }
             }
-        }
 
     }
 }

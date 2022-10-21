@@ -22,6 +22,8 @@
 		310C62A1290181F700F05D39 /* ChatInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310C62A0290181F700F05D39 /* ChatInputField.swift */; };
 		310C62A42902021800F05D39 /* BlurProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310C62A32902021700F05D39 /* BlurProvider.swift */; };
 		310C62A6290202D800F05D39 /* EditMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310C62A5290202D800F05D39 /* EditMessageView.swift */; };
+		310C62AA2902C63000F05D39 /* ChatFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310C62A92902C63000F05D39 /* ChatFooterView.swift */; };
+		310C62AC2902CF7F00F05D39 /* KeyboardPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310C62AB2902CF7F00F05D39 /* KeyboardPublisher.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +43,8 @@
 		310C62A0290181F700F05D39 /* ChatInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInputField.swift; sourceTree = "<group>"; };
 		310C62A32902021700F05D39 /* BlurProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurProvider.swift; sourceTree = "<group>"; };
 		310C62A5290202D800F05D39 /* EditMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMessageView.swift; sourceTree = "<group>"; };
+		310C62A92902C63000F05D39 /* ChatFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatFooterView.swift; sourceTree = "<group>"; };
+		310C62AB2902CF7F00F05D39 /* KeyboardPublisher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardPublisher.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,9 +99,9 @@
 		310C628C29008BFB00F05D39 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				310C62A72902C59200F05D39 /* Header */,
 				310C629229008D5100F05D39 /* Chat  */,
-				310C628D29008C0F00F05D39 /* ChatUserInfoView.swift */,
-				310C628F29008C7500F05D39 /* ChatOfferInfoView.swift */,
+				310C62A82902C5AC00F05D39 /* Footer */,
 				310C628A2900830B00F05D39 /* ChatButton.swift */,
 				310C62A0290181F700F05D39 /* ChatInputField.swift */,
 				310C62A5290202D800F05D39 /* EditMessageView.swift */,
@@ -136,8 +140,26 @@
 			isa = PBXGroup;
 			children = (
 				310C62A32902021700F05D39 /* BlurProvider.swift */,
+				310C62AB2902CF7F00F05D39 /* KeyboardPublisher.swift */,
 			);
 			path = Utilites;
+			sourceTree = "<group>";
+		};
+		310C62A72902C59200F05D39 /* Header */ = {
+			isa = PBXGroup;
+			children = (
+				310C628D29008C0F00F05D39 /* ChatUserInfoView.swift */,
+				310C628F29008C7500F05D39 /* ChatOfferInfoView.swift */,
+			);
+			path = Header;
+			sourceTree = "<group>";
+		};
+		310C62A82902C5AC00F05D39 /* Footer */ = {
+			isa = PBXGroup;
+			children = (
+				310C62A92902C63000F05D39 /* ChatFooterView.swift */,
+			);
+			path = Footer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -217,12 +239,14 @@
 				310C627D29006DD500F05D39 /* ChatView.swift in Sources */,
 				310C629F29017DD100F05D39 /* MessageOfferInfoView.swift in Sources */,
 				310C629029008C7500F05D39 /* ChatOfferInfoView.swift in Sources */,
+				310C62AC2902CF7F00F05D39 /* KeyboardPublisher.swift in Sources */,
 				310C62A42902021800F05D39 /* BlurProvider.swift in Sources */,
 				310C628929006F5600F05D39 /* ChatViewModel.swift in Sources */,
 				310C628E29008C0F00F05D39 /* ChatUserInfoView.swift in Sources */,
 				310C629729009C9200F05D39 /* Message.swift in Sources */,
 				310C627B29006DD500F05D39 /* SwiftUIChatApp.swift in Sources */,
 				310C628B2900830B00F05D39 /* ChatButton.swift in Sources */,
+				310C62AA2902C63000F05D39 /* ChatFooterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,10 +11,14 @@ struct ChatView: View {
 
     @State private var messageText: String = ""
     @State private var isBlurActive: Bool = false
+    @State private var choosedMessageIndex: Int? = nil
     @State private var editFieldPosition: CGPoint = .zero
 
     @State private var headerHeight: CGFloat = 0
     @State private var footerHeight: CGFloat = 0
+
+    @State private var choosedOption: EditOption? = nil
+    @State private var editedMessage: Message? = nil
 
     private var adaptiveEditFieldPosition: CGPoint {
         var position: CGPoint = editFieldPosition
@@ -37,8 +41,28 @@ struct ChatView: View {
             makeChat()
             
             if isBlurActive {
-                EditMessageView()
-                    .position(adaptiveEditFieldPosition )
+                EditMessageView(choosedOption: $choosedOption)
+                    .position(adaptiveEditFieldPosition)
+            }
+        }
+        .onChange(of: choosedOption) { option in
+            if let option = option {
+                withAnimation() {
+                    if let choosedMessageIndex = choosedMessageIndex,
+                       option.title == "Edit" {
+                        editedMessage = Mock.messages[choosedMessageIndex]
+                    }
+
+                    choosedOption = nil
+                    choosedMessageIndex = nil
+                    isBlurActive = false
+                }
+            }
+        }
+        .onChange(of: editedMessage) { message in
+            if message == nil {
+                choosedMessageIndex = nil
+                isBlurActive = false
             }
         }
     }
@@ -84,7 +108,8 @@ struct ChatView: View {
             .addBlurLogic(isBlurActive: $isBlurActive)
 
             MessagesView(isBlurActive: $isBlurActive,
-                         editMessageBottomPoint: $editFieldPosition)
+                         editFieldPosition: $editFieldPosition,
+                         choosedMessageIndex: $choosedMessageIndex)
             .offset(y: messageEditOffset)
 
 
@@ -92,10 +117,12 @@ struct ChatView: View {
                 Divider()
                     .addBlurLogic(isBlurActive: $isBlurActive)
 
-                ChatInputTextField(title: "Message...",
-                                   text: $messageText)
+                ChatFooterView(title: "Message...",
+                               text: $messageText,
+                               editedMessage: $editedMessage)
                 .addBlurLogic(isBlurActive: $isBlurActive)
                 .padding(15)
+
             }
             .overlay {
                 GeometryReader { reader in

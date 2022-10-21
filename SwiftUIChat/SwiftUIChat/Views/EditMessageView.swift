@@ -36,6 +36,8 @@ struct EditMessageView: View {
                    color: .red)
     ]
 
+    @Binding var choosedOption: EditOption?
+
     private enum Constants {
         static let cornerRadius: CGFloat = 10
 
@@ -55,6 +57,9 @@ struct EditMessageView: View {
         VStack(spacing: 0) {
             ForEach(EditMessageView.editOptions, id: \.self) { option in
                 EditMessageComponentView(option: option)
+                    .onTapGesture {
+                        choosedOption = option
+                    }
             }
         }
         .background(
@@ -96,6 +101,7 @@ struct EditMessageComponentView: View {
                 option.icon
 
             }
+            .contentShape(Rectangle())
             .padding(.horizontal, Constants.horizontalPadding)
             .padding(.vertical, 10)
 
@@ -112,8 +118,10 @@ struct EditMessageComponentView: View {
 
 struct EditMessageView_Previews: PreviewProvider {
 
+    @State static var choosedOption: EditOption? = nil
+    
     static var previews: some View {
-        EditMessageView()
+        EditMessageView(choosedOption: $choosedOption)
     }
 
 }

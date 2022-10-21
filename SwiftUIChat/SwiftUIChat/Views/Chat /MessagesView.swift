@@ -18,8 +18,8 @@ struct MessagesView: View {
     }
 
     @Binding var isBlurActive: Bool
-    @Binding var editMessageBottomPoint: CGPoint
-    @State private var editMessadeIndex: Int = Int.min
+    @Binding var editFieldPosition: CGPoint
+    @Binding var choosedMessageIndex: Int?
 
 
     var messages: [Message] = Mock.messages
@@ -48,10 +48,10 @@ struct MessagesView: View {
                         isFirstMessage: isFirstMessage(index: index))
         .id(message.id)
         .padding(.bottom, isFirstMessage(index: index) ? -Constants.differentUsersNegativeVerticalPadding :  -Constants.commonUsersNegativeVerticalPadding)
-        .blur(radius: isBlurActive && index != editMessadeIndex ? 5 : 0)
+        .blur(radius: isBlurActive && index != choosedMessageIndex ? 5 : 0)
         .onTapGesture {
             withAnimation() {
-                if editMessadeIndex != index {
+                if choosedMessageIndex != index {
                     isBlurActive = false
                 }
             }
@@ -60,14 +60,14 @@ struct MessagesView: View {
             GeometryReader { cellReader in
                 EmptyView()
                     .onChange(of: isBlurActive) { _ in
-                        if editMessadeIndex == index {
+                        if choosedMessageIndex == index {
 
                             let xPosition = message.user == Mock.firstUser ?
                             cellReader.frame(in: .global).maxX - EditMessageView.width / 2 - Constants.horizontalPadding :
                             Constants.horizontalPadding * 2 + EditMessageView.width / 2
                             let yPosition = cellReader.frame(in: .global).maxY + Constants.verticalEditViewPadding
 
-                            editMessageBottomPoint = CGPoint(x: xPosition,
+                            editFieldPosition = CGPoint(x: xPosition,
                                                              y: yPosition)
                         }
                     }
@@ -77,7 +77,7 @@ struct MessagesView: View {
             LongPressGesture(minimumDuration: 0.5)
                 .onEnded { value in
                     withAnimation {
-                        editMessadeIndex = index
+                        choosedMessageIndex = index
                         isBlurActive = true
                     }
                 }
@@ -122,8 +122,8 @@ struct MessagesView: View {
             .onChange(of: isBlurActive) { value in
                 if !value {
                     withAnimation() {
-                        editMessadeIndex = Int.min
-                        editMessageBottomPoint = .zero
+                        choosedMessageIndex = Int.min
+                        editFieldPosition = .zero
                     }
                 }
             }
@@ -136,11 +136,13 @@ struct MessagesView: View {
 struct MessagesView_Preview: PreviewProvider {
 
     @State static var isBlurActive: Bool = false
-    @State static var editMessageBottomPoint: CGPoint = .zero
+    @State static var editFieldPosition: CGPoint = .zero
+    @State static var choosedMessageIndex: Int?
 
     static var previews: some View {
         MessagesView(isBlurActive: $isBlurActive,
-                     editMessageBottomPoint: $editMessageBottomPoint)
+                     editFieldPosition: $editFieldPosition,
+                     choosedMessageIndex: $choosedMessageIndex)
             .frame(width: .infinity)
     }
     
