@@ -21,6 +21,7 @@
 		310C629F29017DD100F05D39 /* MessageOfferInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310C629E29017DD100F05D39 /* MessageOfferInfoView.swift */; };
 		310C62A1290181F700F05D39 /* ChatInputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310C62A0290181F700F05D39 /* ChatInputField.swift */; };
 		310C62A42902021800F05D39 /* BlurProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310C62A32902021700F05D39 /* BlurProvider.swift */; };
+		310C62A6290202D800F05D39 /* EditMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 310C62A5290202D800F05D39 /* EditMessageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		310C629E29017DD100F05D39 /* MessageOfferInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageOfferInfoView.swift; sourceTree = "<group>"; };
 		310C62A0290181F700F05D39 /* ChatInputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInputField.swift; sourceTree = "<group>"; };
 		310C62A32902021700F05D39 /* BlurProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurProvider.swift; sourceTree = "<group>"; };
+		310C62A5290202D800F05D39 /* EditMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditMessageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				310C628F29008C7500F05D39 /* ChatOfferInfoView.swift */,
 				310C628A2900830B00F05D39 /* ChatButton.swift */,
 				310C62A0290181F700F05D39 /* ChatInputField.swift */,
+				310C62A5290202D800F05D39 /* EditMessageView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -210,6 +213,7 @@
 				310C629B29009FC900F05D39 /* MessagesView.swift in Sources */,
 				310C62A1290181F700F05D39 /* ChatInputField.swift in Sources */,
 				310C629429008E4A00F05D39 /* ChatMessageView.swift in Sources */,
+				310C62A6290202D800F05D39 /* EditMessageView.swift in Sources */,
 				310C627D29006DD500F05D39 /* ChatView.swift in Sources */,
 				310C629F29017DD100F05D39 /* MessageOfferInfoView.swift in Sources */,
 				310C629029008C7500F05D39 /* ChatOfferInfoView.swift in Sources */,

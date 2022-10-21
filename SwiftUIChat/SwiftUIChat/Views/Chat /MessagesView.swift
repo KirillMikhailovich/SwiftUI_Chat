@@ -10,23 +10,22 @@ import SwiftUI
 struct MessagesView: View {
 
     private enum Constants {
-        static let horizontalPadding: CGFloat = 10
+        static let horizontalPadding: CGFloat = 12
+        static let verticalEditViewPadding: CGFloat = 14
         static let commonUsersNegativeVerticalPadding: CGFloat = 15
         static let differentUsersNegativeVerticalPadding: CGFloat = 5
+
     }
 
     @Binding var isBlurActive: Bool
-    @State var editMessadeIndex: Int = Int.min
+    @Binding var editMessageBottomPoint: CGPoint
+    @State private var editMessadeIndex: Int = Int.min
 
 
     var messages: [Message] = Mock.messages
 
     var body: some View {
-        ZStack {
-
-            makeMessagesScroll()
-
-        }
+        makeMessagesScroll()
     }
 
     private func isFirstMessage(index: Int) -> Bool {
@@ -42,7 +41,9 @@ struct MessagesView: View {
     }
 
 
-    private func makeMessageView(message: Message, index: Int) -> some View {
+    private func makeMessageView(message: Message,
+                                 index: Int,
+                                 gloabalReader: GeometryProxy) -> some View {
         ChatMessageView(currentMessage: message,
                         isFirstMessage: isFirstMessage(index: index))
         .id(message.id)
@@ -53,6 +54,23 @@ struct MessagesView: View {
                 if editMessadeIndex != index {
                     isBlurActive = false
                 }
+            }
+        }
+        .overlay {
+            GeometryReader { cellReader in
+                EmptyView()
+                    .onChange(of: isBlurActive) { _ in
+                        if editMessadeIndex == index {
+
+                            let xPosition = message.user == Mock.firstUser ?
+                            cellReader.frame(in: .global).maxX - EditMessageView.width / 2 - Constants.horizontalPadding :
+                            Constants.horizontalPadding * 2 + EditMessageView.width / 2
+                            let yPosition = cellReader.frame(in: .global).maxY + Constants.verticalEditViewPadding
+
+                            editMessageBottomPoint = CGPoint(x: xPosition,
+                                                             y: yPosition)
+                        }
+                    }
             }
         }
         .gesture(
@@ -79,8 +97,9 @@ struct MessagesView: View {
 
 
                         ForEach(Array(messages.enumerated()), id: \.offset) { index, message in
-                            makeMessageView(message: message,
-                                            index: index)
+                                makeMessageView(message: message,
+                                                index: index,
+                                                gloabalReader: reader)
                         }
                         .onAppear {
                             value.scrollTo(messages.last?.id,
@@ -100,7 +119,14 @@ struct MessagesView: View {
                     }
                 }
             }
-
+            .onChange(of: isBlurActive) { value in
+                if !value {
+                    withAnimation() {
+                        editMessadeIndex = Int.min
+                        editMessageBottomPoint = .zero
+                    }
+                }
+            }
             .padding(.horizontal, Constants.horizontalPadding)
             .frame(maxWidth: .infinity)
         }
@@ -110,9 +136,11 @@ struct MessagesView: View {
 struct MessagesView_Preview: PreviewProvider {
 
     @State static var isBlurActive: Bool = false
+    @State static var editMessageBottomPoint: CGPoint = .zero
 
     static var previews: some View {
-        MessagesView(isBlurActive: $isBlurActive)
+        MessagesView(isBlurActive: $isBlurActive,
+                     editMessageBottomPoint: $editMessageBottomPoint)
             .frame(width: .infinity)
     }
     
